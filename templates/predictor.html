@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Rating Predictor</title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: black; 
+            color: wheat
+        }
+        
+        .main {
+            text-align: center;
+            padding: 20px;
+        }
+        .logo {
+            width: 100px;
+        }
+        .heading h1 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .heading p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .form1 {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #333;
+        }
+        .fields div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit button:hover {
+            background-color: #45a049;
+        }
+        .pred {
+            margin-top: 20px;
+        }
+        #rating {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body onload="addOptions()">
+    <div class="main">
+        
+        <div class="heading">
+            <h1 id="title1">Welcome to the Predictor</h1>
+            <p id="desc">Enter the details to get the Rating!</p>
+            <p id="note">NOTE: Hold down the Ctrl (windows) or Command (Mac) button to select multiple options in Restaurant Type and Cuisines. </p>
+        </div>
+        <div class="form1">
+            <h2 id="form-head">Predictor Form</h2>
+            <hr id="hr1">
+            <form action="/predictor" method="POST">
+                <div class="fields">
+                    <div class="r1">
+                        <label for="RT" id="Rest-Type">Restaurant Type</label>
+                        <select name="rest_type" id="RT" required multiple>
+                            <option value="null">Select-Rest-Type</option>
+                        </select>
+                        <label for="C" id="Cuisines">Cuisines</label>
+                        <select name="cuisines" id="C" required multiple>
+                            <option value="null">Select-Cuisines</option>
+                        </select>
+                    </div>
+                    <div class="r2">
+                        <label for="OO" id="Online-Order">Online Order Facility</label>
+                        <select name="online_order" id="OO" required>
+                            <option>-Select-</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="BT" id="Book-Table">Book Table Facility</label>
+                        <select name="book_table" id="BT" required>
+                            <option>-Select-</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="r3">
+                        <label for="L" id="Location">Location</label>
+                        <select name="location" id="L" required>
+                            <option value="null">Select-Location</option>
+                        </select>
+                        <label for="AC" id="Cost">Cost For Two People</label>
+                        <input id="AC" type="number" name="approx_cost" min="300" placeholder="- Enter Cost -" required>
+                    </div>
+                    <div class="r4">
+                        <label for="V" id="Votes">No. of Votes</label>
+                        <input type="number" name="votes" id="V" min="1" placeholder="- Enter Votes -" required>
+                    </div>
+                </div>
+                <div class="submit">
+                    <button id="Submit" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="pred">
+            <p id="pred-text">Expected Rating</p>
+            <hr id="hr2">
+            <p id="rating">{{ prediction_text }}</p>
+        </div>
+        <footer>
+            <p id="end-text">Created by Lakshita Joshi</p>
+        </footer>
+    </div>
+
+    <script src="static/script.js"></script>
+
+</body>
+</html>
