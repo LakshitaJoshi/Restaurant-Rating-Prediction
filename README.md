@@ -1,1 +1,1 @@
-<a url = "[https://restaurant-rating-prediction-yep3.onrender.com/]"> Restaurant Rating </a>
+[Restaurant Rating](https://restaurant-rating-prediction-yep3.onrender.com/)
